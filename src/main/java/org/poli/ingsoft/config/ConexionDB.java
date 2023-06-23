@@ -13,7 +13,7 @@ public class ConexionDB {
     private final String USER = "postgres";
     private final String PASS = "admin";
 
-    public ConexionDB() {
+    private ConexionDB() {
         try{
             connection = DriverManager.getConnection(URL, USER, PASS);
             System.out.println("Conectado");
@@ -25,7 +25,7 @@ public class ConexionDB {
     }
 
     //Implementación del patrón singleton para acceder a una instancia única de la clase
-    public static ConexionDB conexionDB(){
+    public static ConexionDB getInstance(){
         if (conexionDBInstance == null) {
             conexionDBInstance = new ConexionDB();
         }

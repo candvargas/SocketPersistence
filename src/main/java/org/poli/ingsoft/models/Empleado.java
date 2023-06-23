@@ -8,7 +8,7 @@ public class Empleado {
     private String emplSegundoNombre;
     private String emplEmail;
     private Date emplFechaNac;
-    private int emplsueldo;
+    private int emplSueldo;
     private int emplComision;
     private int emplCargoId;
     private int emplGerenteId;
@@ -17,13 +17,13 @@ public class Empleado {
     public Empleado() {
     }
 
-    public Empleado(long emplId, String emplPrimerNombre, String emplSegundoNombre, String emplEmail, Date emplFechaNac, int emplsueldo, int emplComision, int emplCargoId, int emplGerenteId, int emplDptoId) {
+    public Empleado(long emplId, String emplPrimerNombre, String emplSegundoNombre, String emplEmail, Date emplFechaNac, int emplSueldo, int emplComision, int emplCargoId, int emplGerenteId, int emplDptoId) {
         this.emplId = emplId;
         this.emplPrimerNombre = emplPrimerNombre;
         this.emplSegundoNombre = emplSegundoNombre;
         this.emplEmail = emplEmail;
         this.emplFechaNac = emplFechaNac;
-        this.emplsueldo = emplsueldo;
+        this.emplSueldo = emplSueldo;
         this.emplComision = emplComision;
         this.emplCargoId = emplCargoId;
         this.emplGerenteId = emplGerenteId;
@@ -70,12 +70,12 @@ public class Empleado {
         this.emplFechaNac = emplFechaNac;
     }
 
-    public int getEmplsueldo() {
-        return emplsueldo;
+    public int getEmplSueldo() {
+        return emplSueldo;
     }
 
-    public void setEmplsueldo(int emplsueldo) {
-        this.emplsueldo = emplsueldo;
+    public void setEmplSueldo(int emplSueldo) {
+        this.emplSueldo = emplSueldo;
     }
 
     public int getEmplComision() {
