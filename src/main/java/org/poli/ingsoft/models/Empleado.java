@@ -17,7 +17,9 @@ public class Empleado {
     public Empleado() {
     }
 
-    public Empleado(long emplId, String emplPrimerNombre, String emplSegundoNombre, String emplEmail, Date emplFechaNac, int emplSueldo, int emplComision, int emplCargoId, int emplGerenteId, int emplDptoId) {
+    public Empleado(long emplId, String emplPrimerNombre, String emplSegundoNombre, String emplEmail,
+                    Date emplFechaNac, int emplSueldo, int emplComision, int emplCargoId, int emplGerenteId,
+                    int emplDptoId) {
         this.emplId = emplId;
         this.emplPrimerNombre = emplPrimerNombre;
         this.emplSegundoNombre = emplSegundoNombre;
@@ -108,5 +110,21 @@ public class Empleado {
 
     public void setEmplDptoId(int emplDptoId) {
         this.emplDptoId = emplDptoId;
+    }
+
+    @Override
+    public String toString() {
+        return "Empleado{" +
+                "emplId=" + emplId +
+                ", emplPrimerNombre='" + emplPrimerNombre + '\'' +
+                ", emplSegundoNombre='" + emplSegundoNombre + '\'' +
+                ", emplEmail='" + emplEmail + '\'' +
+                ", emplFechaNac=" + emplFechaNac +
+                ", emplSueldo=" + emplSueldo +
+                ", emplComision=" + emplComision +
+                ", emplCargoId=" + emplCargoId +
+                ", emplGerenteId=" + emplGerenteId +
+                ", emplDptoId=" + emplDptoId +
+                "}\n";
     }
 }

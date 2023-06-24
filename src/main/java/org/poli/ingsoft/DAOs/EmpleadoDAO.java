@@ -65,7 +65,7 @@ public class EmpleadoDAO implements IDao<Empleado, Long> {
     }
 
     @Override
-    public Empleado readRecord(Empleado model, Long idModel) {
+    public Empleado readRecord(Long idModel) {
         try {
             preparedStatement = connection.prepareStatement(QUERIES[1]);
             preparedStatement.setLong(1, idModel);
@@ -84,8 +84,8 @@ public class EmpleadoDAO implements IDao<Empleado, Long> {
                 empleado.setEmplDptoId(data.getInt("empl_dpto_id"));
             }
         } catch (SQLException e) {
-            //throw new RuntimeException(e);
-            Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, e);
+            throw new RuntimeException(e);
+            //Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         return empleado;
     }

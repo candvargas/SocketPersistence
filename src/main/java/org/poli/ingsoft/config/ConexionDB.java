@@ -9,7 +9,7 @@ public class ConexionDB {
 
     private static ConexionDB conexionDBInstance;
     private Connection connection;
-    private final String URL= "jdbc:postgresql://localhost:5432/postgres";
+    private final String URL= "jdbc:postgresql://localhost:5432/recursos_humanos";
     private final String USER = "postgres";
     private final String PASS = "admin";
 

@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface IDao<T,V> {
     public boolean createRecord(T model);
-    public T readRecord(T model, V idModel);
+    public T readRecord(V idModel);
     public boolean updateRecord(T model, V idModel);
     public boolean deleteRecord(V idModel);
     public List<T> readRecords();
