@@ -23,7 +23,7 @@ public class EmpleadoDAO implements IDao<Empleado, Long> {
                     "VALUES(?, ?, ?, ?," +
                     " ?, ?, ?, ?, ?);",
             "SELECT empl_id, empl_primer_nombre, empl_segundo_nombre, empl_email, empl_fecha_nac, empl_sueldo, " +
-                    "empl_comision, empl_cargo_id, empl_gerente_id, empl_dpto_id " +
+                    "empl_comision, empl_cargo_id, empl_gerente_id, empl_dpto_id, empl_activo " +
                     "FROM public.empleados WHERE empl_id = ?;",
             "UPDATE public.empleados\n" +
                     "SET empl_primer_nombre=?, empl_segundo_nombre=?, empl_email=?, empl_fecha_nac=?, " +
@@ -31,7 +31,11 @@ public class EmpleadoDAO implements IDao<Empleado, Long> {
                     "WHERE empl_id=?;\n",
             "DELETE FROM public.empleados\n" +
                     "WHERE empl_id=?;\n",
-            "SELECT * FROM public.empleados"
+            "SELECT * FROM public.empleados",
+            "INSERT INTO public.historico\n" +
+                    "(emphist_fecha_retiro, emphist_cargo_id, emphist_dpto_id)\n" +
+                    "VALUES(CURRENT_DATE, ?, ?);" +
+                    "UPDATE public.empleados SET empl_activo=FALSE WHERE empl_id=?;\n"
     };
 
     public EmpleadoDAO() {
@@ -82,6 +86,7 @@ public class EmpleadoDAO implements IDao<Empleado, Long> {
                 empleado.setEmplCargoId(data.getInt("empl_cargo_id"));
                 empleado.setEmplGerenteId(data.getInt("empl_gerente_id"));
                 empleado.setEmplDptoId(data.getInt("empl_dpto_id"));
+                empleado.setEmplActivo(data.getBoolean("empl_activo"));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -115,17 +120,35 @@ public class EmpleadoDAO implements IDao<Empleado, Long> {
         return isSuccesfully;
     }
 
+//    @Override
+//    public boolean deleteRecord(Long idModel) {
+//        try {
+//            preparedStatement = connection.prepareStatement(QUERIES[3]);
+//            preparedStatement.setLong(1, idModel);
+//
+//            isSuccesfully = preparedStatement.executeUpdate() > 0;
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//        return isSuccesfully;
+//    }
+
+
     @Override
     public boolean deleteRecord(Long idModel) {
+        readRecord(idModel);
         try {
-            preparedStatement = connection.prepareStatement(QUERIES[3]);
-            preparedStatement.setLong(1, idModel);
+            preparedStatement= connection.prepareStatement(QUERIES[5]);
+            preparedStatement.setInt(1,empleado.getEmplCargoId());
+            preparedStatement.setInt(2, empleado.getEmplDptoId());
+            preparedStatement.setLong(3, idModel);
 
-            isSuccesfully = preparedStatement.executeUpdate() > 0;
+            System.out.println(preparedStatement);
+
+            return isSuccesfully = preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return isSuccesfully;
     }
 
     @Override
@@ -145,7 +168,8 @@ public class EmpleadoDAO implements IDao<Empleado, Long> {
                         data.getInt("empl_comision"),
                         data.getInt("empl_cargo_id"),
                         data.getInt("empl_gerente_id"),
-                        data.getInt("empl_dpto_id")
+                        data.getInt("empl_dpto_id"),
+                        data.getBoolean("empl_activo")
                         ));
             }
         } catch (SQLException e) {

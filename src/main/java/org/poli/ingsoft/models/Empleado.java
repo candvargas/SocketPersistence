@@ -14,12 +14,14 @@ public class Empleado {
     private int emplGerenteId;
     private int emplDptoId;
 
+    private boolean emplActivo;
+
     public Empleado() {
     }
 
     public Empleado(long emplId, String emplPrimerNombre, String emplSegundoNombre, String emplEmail,
                     Date emplFechaNac, int emplSueldo, int emplComision, int emplCargoId, int emplGerenteId,
-                    int emplDptoId) {
+                    int emplDptoId, boolean emplActivo) {
         this.emplId = emplId;
         this.emplPrimerNombre = emplPrimerNombre;
         this.emplSegundoNombre = emplSegundoNombre;
@@ -30,6 +32,7 @@ public class Empleado {
         this.emplCargoId = emplCargoId;
         this.emplGerenteId = emplGerenteId;
         this.emplDptoId = emplDptoId;
+        this.emplActivo = emplActivo;
     }
 
     public long getEmplId() {
@@ -112,6 +115,14 @@ public class Empleado {
         this.emplDptoId = emplDptoId;
     }
 
+    public boolean isEmplActivo() {
+        return emplActivo;
+    }
+
+    public void setEmplActivo(boolean emplActivo) {
+        this.emplActivo = emplActivo;
+    }
+
     @Override
     public String toString() {
         return "Empleado{" +
@@ -125,6 +136,7 @@ public class Empleado {
                 ", emplCargoId=" + emplCargoId +
                 ", emplGerenteId=" + emplGerenteId +
                 ", emplDptoId=" + emplDptoId +
-                "}\n";
+                ", emplActivo=" + emplActivo +
+                '}';
     }
 }
