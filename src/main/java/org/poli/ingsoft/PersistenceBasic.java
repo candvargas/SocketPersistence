@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * It just my first implementation about persistence without using sockets
+ */
 public class PersistenceBasic {
     public static void main(String[] args) {
         ConexionDB.getInstance();

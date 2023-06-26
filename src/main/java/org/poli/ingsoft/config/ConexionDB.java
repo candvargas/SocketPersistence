@@ -5,6 +5,9 @@ import java.sql.DriverManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Connection to DB
+ */
 public class ConexionDB {
 
     private static ConexionDB conexionDBInstance;
@@ -24,7 +27,7 @@ public class ConexionDB {
         }
     }
 
-    //Implementación del patrón singleton para acceder a una instancia única de la clase
+    //Implementing singleton pattern to access an only on instance from class
     public static ConexionDB getInstance(){
         if (conexionDBInstance == null) {
             conexionDBInstance = new ConexionDB();

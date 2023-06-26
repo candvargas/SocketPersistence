@@ -2,6 +2,9 @@ package org.poli.ingsoft.models;
 
 import java.util.Date;
 
+/**
+ * DTO entity Empleado
+ */
 public class Empleado {
     private long emplId;
     private String emplPrimerNombre;

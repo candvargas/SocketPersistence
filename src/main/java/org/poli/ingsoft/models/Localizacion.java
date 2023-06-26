@@ -1,5 +1,8 @@
 package org.poli.ingsoft.models;
 
+/**
+ * DTO entity Localizacion
+ */
 public class Localizacion {
     private int localizId;
     private int localizCiudadId;

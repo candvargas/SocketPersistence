@@ -5,6 +5,11 @@ public class DaoFactory {
         EMPLEADO
     }
 
+    /**
+     * Allow to create instance and access to ConexionDB instance
+     * @param daoType
+     * @return
+     */
     public static IDao getDao(DaoType daoType){
         IDao dao = null;
         switch (daoType){

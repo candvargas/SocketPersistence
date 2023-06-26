@@ -13,6 +13,9 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * It works like socket server
+ */
 public class Server {
     public static final int PUERTO = 5000;
     public DataOutputStream out;
@@ -24,12 +27,16 @@ public class Server {
         this.serverSocket = serverSocket;
     }
 
+    /**
+     * Method to start server
+     */
     public void startServer() {
         System.out.println("Servidor iniciado y contestando OK");
         try {
             cliente = this.serverSocket.accept();
             Empleado empleado = new Empleado();
 
+            //Create instance to connect to the DB
             IDao dao = DaoFactory.getDao(DaoFactory.DaoType.EMPLEADO);
 
             List<Empleado> empleados = new ArrayList<>();
@@ -145,6 +152,10 @@ public class Server {
         }
     }
 
+    /**
+     * Show menu options
+     * @return
+     */
     public StringBuilder showMenu(){
         StringBuilder strBuilder =  new StringBuilder();
         strBuilder.append("*# GESTIÓN DE EMPLEADOS, POR FAVOR HACER SELECCIÓN #*\n");
@@ -158,6 +169,11 @@ public class Server {
         return strBuilder;
     }
 
+    /**
+     * Sending message using socket
+     * @param message
+     * @return
+     */
     public String sendingMessage(String message) {
         try {
             out = new DataOutputStream(cliente.getOutputStream());
@@ -168,6 +184,11 @@ public class Server {
         }
     }
 
+    /**
+     * Receiving messages using sockets
+     * @param in
+     * @return
+     */
     public String receivingMessage(DataInputStream in) {
         String receiveMessage = null;
         try {
@@ -178,6 +199,10 @@ public class Server {
         }
     }
 
+    /**
+     * Main method to start socket server
+     * @param args
+     */
     public static void main(String[] args) {
         try {
             Server server = new Server(new ServerSocket(PUERTO));
