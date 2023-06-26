@@ -1,5 +1,8 @@
 package org.poli.ingsoft.models;
 
+/**
+ * DTO entity Ciudad
+ */
 public class Ciudad {
     private int ciudId;
     private int ciudPaisId;

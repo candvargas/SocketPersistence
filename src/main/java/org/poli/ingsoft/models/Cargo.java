@@ -1,5 +1,8 @@
 package org.poli.ingsoft.models;
 
+/**
+ * DTO entity Cargo
+ */
 public class Cargo {
     private int cargoId;
     private String cargoNombre;

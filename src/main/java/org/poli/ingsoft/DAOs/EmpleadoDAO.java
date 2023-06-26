@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Implement interface DAO to manage persistence to Employees (Empleados)
+ */
 public class EmpleadoDAO implements IDao<Empleado, Long> {
 
     private Connection connection;

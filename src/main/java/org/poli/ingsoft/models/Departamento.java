@@ -1,5 +1,8 @@
 package org.poli.ingsoft.models;
 
+/**
+ * DTO entity Departamento
+ */
 public class Departamento {
     private int dptoId;
     private String deptoNombre;

@@ -2,6 +2,9 @@ package org.poli.ingsoft.models;
 
 import java.util.Date;
 
+/**
+ * DTO entity Historico
+ */
 public class Historico {
     private int emphistId;
     private Date emphistFechaRetiro;

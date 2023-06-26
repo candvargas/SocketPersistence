@@ -1,5 +1,8 @@
 package org.poli.ingsoft.models;
 
+/**
+ * DTO entity Pais
+ */
 public class Pais {
     private int paisId;
     private String paisNombre;

@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.Scanner;
 
+/**
+ * Works like client socket
+ */
 public class Client {
     private final String HOST = "127.0.0.1";
     private final int PORT = 5000;
@@ -13,6 +16,11 @@ public class Client {
     private DataOutputStream out = null;
     private Socket socket;
 
+    /**
+     * Sending messages using sockets
+     * @param message
+     * @return
+     */
     public String sendingMessage(String message) {
         try {
             out = new DataOutputStream(this.socket.getOutputStream());
@@ -23,6 +31,11 @@ public class Client {
         }
     }
 
+    /**
+     * Receiving messages using sockets
+     * @param in
+     * @return
+     */
     public String receivingMessage(DataInputStream in) {
         String receiveMessage = null;
         try {
@@ -34,6 +47,9 @@ public class Client {
         }
     }
 
+    /**
+     * Start session with server socket
+     */
     public void startSession() {
         try {
             socket = new Socket(HOST, PORT);
@@ -90,12 +106,12 @@ public class Client {
                         receivingMessage(in);//Query
                         break;
                     case 3://ELIMINAR EMPLEADO
-                        receivingMessage(in);
+                        receivingMessage(in);//IdEmpleado
                         sendingMessage(sc.next());
                         receivingMessage(in);//Query
                         break;
                     case 4://BUSCAR EMPLEADO
-                        receivingMessage(in);
+                        receivingMessage(in);//IdEmpleado
                         sendingMessage(sc.next());
                         receivingMessage(in);//Query
                         break;
